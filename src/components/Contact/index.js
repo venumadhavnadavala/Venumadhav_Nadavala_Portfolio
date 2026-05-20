@@ -126,15 +126,27 @@ const Contact = () => {
     const form = useRef();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi')
-            .then((result) => {
-                setOpen(true);
-                form.current.reset();
-            }, (error) => {
-                console.log(error.text);
-            });
-    }
+  e.preventDefault();
+
+  emailjs
+    .sendForm(
+      'service_j6ut37e',          
+      'template_qfs4g1c',         
+      form.current,               
+      '5Gim-t8jwZBv0FaPx'     
+    )
+    .then(
+      (result) => {
+        console.log('Email sent successfully:', result.text);
+        setOpen(true);
+        form.current.reset();
+      },
+      (error) => {
+        console.error('EmailJS Error:', error.text);
+        alert('Failed to send email. Check the console for details.');
+      }
+    );
+};
 
     return (
         <Container>
